@@ -212,7 +212,7 @@ $detalles = array(
 /**
 IMPLEMENTACIÓN DE LA OPERACIÓN getProd
 */
-function getProd($string)
+function getProd($user, $pass, $string)
 {
     global $productos;
     $categoria = strtolower($string);
@@ -233,7 +233,7 @@ function getProd($string)
 IMPLEMENTACIÓN DE LA OPERACIÓN getDetails
 */
 
-function getDetails($isbn)
+function getDetails($user, $pass, $isbn)
 {
     global $detalles;
     $respuesta = '';
