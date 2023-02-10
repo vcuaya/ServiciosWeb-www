@@ -22,6 +22,41 @@ $server->decode_utf8 = false;
 $server->encode_utf8 = true;
 
 /**
+TIPO COMPLEJO PARA LA RESPUESTA DE gegtProd
+*/
+$server->wsdl->addComplexType(
+    'RespuestaGetProd',
+    'complexType',
+    'struct',
+    'all',
+    '',
+    array(
+        'code' => ['name' => 'code', 'type' => 'xsd:string'],
+        'message' => ['name' => 'message', 'type' => 'xsd:string'],
+        'data' => ['name' => 'data', 'type' => 'xsd:string'],
+        'status' => ['name' => 'status', 'type' => 'xsd:string']
+    )
+);
+
+/**
+TIPO COMPLEJO PARA LA RESPUESTA DE gegtDetails
+*/
+$server->wsdl->addComplexType(
+    'RespuestaGetDetails',
+    'complexType',
+    'struct',
+    'all',
+    '',
+    array(
+        'code' => ['name' => 'code', 'type' => 'xsd:string'],
+        'message' => ['name' => 'message', 'type' => 'xsd:string'],
+        'data' => ['name' => 'data', 'type' => 'xsd:string'],
+        'status' => ['name' => 'status', 'type' => 'xsd:string'],
+        'oferta' => ['name' => 'oferta', 'type' => 'xsd:boolean']
+    )
+);
+
+/**
 REGISTRO DE LA OPERACIÓN getProd EN LA INTERFAZ DEL SERVICIO (WSDL)
 */
 $server->register(
