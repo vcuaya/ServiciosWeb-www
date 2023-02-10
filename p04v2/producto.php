@@ -90,7 +90,11 @@ $server->register(
     // Nombre de la operación (método)
     'getDetails',
     // Lista de parámetros; varios de tipo simple o un tipo complejo
-    array('isbn' => 'xsd:string'),
+    array(
+        'user' => 'xsd:string',
+        'pass' => 'xsd:string',
+        'isbn' => 'xsd:string'
+    ),
     // Respuesta; de tipo simple o de tipo complejo
     // array('return' => 'xsd:string'),
     array('return' => 'tns:RespuestaGetDetails'),
