@@ -65,7 +65,8 @@ $server->register(
     // Lista de parámetros; varios de tipo simple o un tipo complejo
     array('categoria' => 'xsd:string'),
     // Respuesta; de tipo simple o de tipo complejo
-    array('return' => 'xsd:string'),
+    // array('return' => 'xsd:string'),
+    array('return' => 'tns:RespuestaGetProd'),
     // Namespace para entradas (input) y salidas (output)
     'urn:producto',
     // Nombre de la acción (soapAction)
@@ -87,7 +88,8 @@ $server->register(
     // Lista de parámetros; varios de tipo simple o un tipo complejo
     array('isbn' => 'xsd:string'),
     // Respuesta; de tipo simple o de tipo complejo
-    array('return' => 'xsd:string'),
+    // array('return' => 'xsd:string'),
+    array('return' => 'tns:RespuestaGetDetails'),
     // Namespace para entradas (input) y salidas (output)
     'urn:producto',
     // Nombre de la acción (soapAction)
