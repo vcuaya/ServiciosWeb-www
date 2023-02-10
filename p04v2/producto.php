@@ -174,7 +174,7 @@ function getProd($string)
     $respuesta = '';
 
     if (array_key_exists($categoria, $productos))
-        $respuesta = json_encode($productos[$categoria], JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+        $respuesta = json_encode($productos[$categoria], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
     else {
         $respuesta = "No hay productos de esta categoria";
         error_log('categoria: ' . $categoria);
@@ -194,7 +194,7 @@ function getDetails($isbn)
     $respuesta = '';
 
     if (array_key_exists($isbn, $detalles))
-        $respuesta = json_encode($detalles[$isbn], JSON_PRETTY_PRINT, JSON_UNESCAPED_UNICODE);
+        $respuesta = json_encode($detalles[$isbn], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
     else {
         $respuesta = "No hay productos registrados con este ISBN";
         error_log('categoria: ' . $isbn);
