@@ -209,6 +209,16 @@ $detalles = array(
     ]
 );
 
+$respuestas = array(
+    200 => 'Categoría encontrada exitosamente.',
+    201 => 'ISBN encontrado exitosamente.',
+    300 => 'Categoría no encontrada.',
+    301 => 'ISBN no encontrado.',
+    500 => 'Usuario no reconocido.',
+    501 => 'Password no reconocido.',
+    999 => 'Error no identificado'
+);
+
 /**
 IMPLEMENTACIÓN DE LA OPERACIÓN getProd
 */
