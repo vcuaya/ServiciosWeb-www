@@ -210,6 +210,7 @@ $detalles = array(
 );
 
 $respuestas = array(
+    // ARREGLO DE RESPUESTAS
     200 => 'Categoría encontrada exitosamente.',
     201 => 'ISBN encontrado exitosamente.',
     300 => 'Categoría no encontrada.',
@@ -217,6 +218,13 @@ $respuestas = array(
     500 => 'Usuario no reconocido.',
     501 => 'Password no reconocido.',
     999 => 'Error no identificado'
+);
+
+$usuarios = array(
+    // ARRELGO DE USUARIOS
+    'pruebas1' => 'de88e3e4ab202d87754078cbb2df6063',
+    'pruebas2' => '6796ebbb111298d042de1a20a7b9b6eb',
+    'pruebas3' => 'f7e999012e3700d47e6cb8700ee9cf19',
 );
 
 /**
