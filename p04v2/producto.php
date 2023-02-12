@@ -234,15 +234,48 @@ function getProd($user, $pass, $string)
 {
     try {
         global $productos, $usuarios, $respuestas;
+
         $categoria = strtolower($string);
         $respuesta = '';
 
-        if (array_key_exists($categoria, $productos))
-            $respuesta = json_encode($productos[$categoria], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-        else {
-            $respuesta = "No hay productos de esta categoria";
-            error_log('categoria: ' . $categoria);
-            error_log('error: ' . $respuesta);
+        if (array_key_exists($user, $usuarios)) {
+            if ($usuarios[$user] == md5($pass)) {
+                if (array_key_exists($categoria, $productos)) {
+                    $respuesta = array(
+                        'code' => 200,
+                        'message' => $respuestas[200],
+                        'data' => json_encode($productos[$categoria], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE),
+                        'status' => 'success'
+                    );
+                } else {
+                    $respuesta = array(
+                        'code' => 300,
+                        'message' => $respuestas[300],
+                        'data' => $categoria,
+                        'status' => 'error'
+                    );
+
+                    error_log($respuesta);
+                }
+            } else {
+                $respuesta = array(
+                    'code' => 501,
+                    'message' => $respuestas[501],
+                    'data' => '',
+                    'status' => 'error'
+                );
+
+                error_log($respuesta);
+            }
+        } else {
+            $respuesta = array(
+                'code' => 500,
+                'message' => $respuestas[500],
+                'data' => $user,
+                'status' => 'error'
+            );
+
+            error_log($respuesta);
         }
 
         return $respuesta;
@@ -267,14 +300,47 @@ function getDetails($user, $pass, $isbn)
 {
     try {
         global $detalles, $usuarios, $respuestas;
+
         $respuesta = '';
 
-        if (array_key_exists($isbn, $detalles))
-            $respuesta = json_encode($detalles[$isbn], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-        else {
-            $respuesta = "No hay productos registrados con este ISBN";
-            error_log('categoria: ' . $isbn);
-            error_log('error: ' . $respuesta);
+        if (array_key_exists($user, $usuarios)) {
+            if ($usuarios[$user] == md5($pass)) {
+                if (array_key_exists($isbn, $detalles)) {
+                    $respuesta = array(
+                        'code' => 201,
+                        'message' => $respuestas[201],
+                        'data' => json_encode($detalles[$isbn], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE),
+                        'status' => 'success'
+                    );
+                } else {
+                    $respuesta = array(
+                        'code' => 301,
+                        'message' => $respuestas[301],
+                        'data' => $isbn,
+                        'status' => 'error'
+                    );
+
+                    error_log($respuesta);
+                }
+            } else {
+                $respuesta = array(
+                    'code' => 501,
+                    'message' => $respuestas[501],
+                    'data' => '',
+                    'status' => 'error'
+                );
+
+                error_log($respuesta);
+            }
+        } else {
+            $respuesta = array(
+                'code' => 500,
+                'message' => $respuestas[500],
+                'data' => $user,
+                'status' => 'error'
+            );
+
+            error_log($respuesta);
         }
 
         return $respuesta;
