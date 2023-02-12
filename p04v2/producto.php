@@ -251,7 +251,7 @@ function getProd($user, $pass, $string)
         $respuesta = array(
             'code' => 999,
             'message' => $respuestas[999],
-            'data' => $ex->getMessage(),
+            'data' => '',
             'status' => 'error'
         );
 
@@ -265,18 +265,30 @@ IMPLEMENTACIÓN DE LA OPERACIÓN getDetails
 
 function getDetails($user, $pass, $isbn)
 {
-    global $detalles, $usuarios, $respuestas;
-    $respuesta = '';
+    try {
+        global $detalles, $usuarios, $respuestas;
+        $respuesta = '';
 
-    if (array_key_exists($isbn, $detalles))
-        $respuesta = json_encode($detalles[$isbn], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-    else {
-        $respuesta = "No hay productos registrados con este ISBN";
-        error_log('categoria: ' . $isbn);
-        error_log('error: ' . $respuesta);
+        if (array_key_exists($isbn, $detalles))
+            $respuesta = json_encode($detalles[$isbn], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+        else {
+            $respuesta = "No hay productos registrados con este ISBN";
+            error_log('categoria: ' . $isbn);
+            error_log('error: ' . $respuesta);
+        }
+
+        return $respuesta;
+
+    } catch (Exception $ex) {
+        $respuesta = array(
+            'code' => 999,
+            'message' => $respuestas[999],
+            'data' => $ex->getMessage(),
+            'status' => 'error'
+        );
+
+        error_log($respuesta);
     }
-
-    return $respuesta;
 }
 
 /**
