@@ -232,7 +232,7 @@ IMPLEMENTACIÓN DE LA OPERACIÓN getProd
 */
 function getProd($user, $pass, $string)
 {
-    global $productos;
+    global $productos, $usuarios, $respuestas;
     $categoria = strtolower($string);
     $respuesta = '';
 
@@ -253,7 +253,7 @@ IMPLEMENTACIÓN DE LA OPERACIÓN getDetails
 
 function getDetails($user, $pass, $isbn)
 {
-    global $detalles;
+    global $detalles, $usuarios, $respuestas;
     $respuesta = '';
 
     if (array_key_exists($isbn, $detalles))
