@@ -232,19 +232,31 @@ IMPLEMENTACIÓN DE LA OPERACIÓN getProd
 */
 function getProd($user, $pass, $string)
 {
-    global $productos, $usuarios, $respuestas;
-    $categoria = strtolower($string);
-    $respuesta = '';
+    try {
+        global $productos, $usuarios, $respuestas;
+        $categoria = strtolower($string);
+        $respuesta = '';
 
-    if (array_key_exists($categoria, $productos))
-        $respuesta = json_encode($productos[$categoria], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-    else {
-        $respuesta = "No hay productos de esta categoria";
-        error_log('categoria: ' . $categoria);
-        error_log('error: ' . $respuesta);
+        if (array_key_exists($categoria, $productos))
+            $respuesta = json_encode($productos[$categoria], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+        else {
+            $respuesta = "No hay productos de esta categoria";
+            error_log('categoria: ' . $categoria);
+            error_log('error: ' . $respuesta);
+        }
+
+        return $respuesta;
+
+    } catch (Exception $ex) {
+        $respuesta = array(
+            'code' => 999,
+            'message' => $respuestas[999],
+            'data' => $ex->getMessage(),
+            'status' => 'error'
+        );
+
+        error_log($respuesta);
     }
-
-    return $respuesta;
 }
 
 /**
